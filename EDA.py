@@ -23,14 +23,14 @@ from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
 
+st.set_page_config(
+    page_title="EDA Exploratory Data Analysis",
+    page_icon="📃",
+)
 
 def run():
-    st.set_page_config(
-        page_title="EDA Exploratory Data Analysis",
-        page_icon="📃",
-    )
 
-    st.write("# Exploratory Data Analysis! 📃")
+    st.write("✉️franmmd@gmail.com")
 
     # Upload CSV data
 with st.sidebar.header('Upload your data file'):
@@ -41,7 +41,7 @@ with st.sidebar.header('Upload your data file'):
             max_chars=1,
             help="How your CSV values are separated (doesn't matter for excel)",
         )
-    separator = st.sidebar.text_input(
+    decimal = st.sidebar.text_input(
             "CSV Decimal point",
             value=".",
             max_chars=1,
@@ -52,7 +52,7 @@ with st.sidebar.header('Upload your data file'):
 [Example CSV input file](https://raw.githubusercontent.com/dataprofessor/data/master/delaney_solubility_with_descriptors.csv)
 """)
  
-
+st.write("# Exploratory Data Analysis! 📃")
 # Pandas Profiling Report
 if uploaded_file is not None:
   
@@ -72,7 +72,7 @@ if uploaded_file is not None:
         return raw_df
 
 
-    df = read_csv_or_excel(uploaded_file, separator)
+    df = read_csv_or_excel(uploaded_file, separator, decimal)
     st.header('**Input DataFrame**')
     st.write(df)
     st.write('---')
